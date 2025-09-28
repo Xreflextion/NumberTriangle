@@ -121,22 +121,28 @@ public class NumberTriangle {
             String[] lineValues = line.split(" ");
             int prevLineIdx = 0;
             for (int i = 0; i < lineValues.length; i ++) {
+                // Create new number triangle with the current value in the line
                 int value = Integer.parseInt(lineValues[i]);
                 NumberTriangle cur = new NumberTriangle(value);
+
                 if (prevLine == null) {
+                    // Very top of the triangle
                     top = cur;
                 } else {
                     if (i == 0) {
+                        // We are at the first value in the current line
                         prevLine[prevLineIdx].left = cur;
                     } else {
                         prevLine[prevLineIdx].right = cur;
                         prevLineIdx ++;
                         if (prevLineIdx < prevLine.length) {
+                            // Only run if the value of the current line is not the last one
                             prevLine[prevLineIdx].left = cur;
                         }
                     }
 
                 }
+                // Populate the list containing number triangles of the current line
                 curLine[i] = cur;
             }
 
