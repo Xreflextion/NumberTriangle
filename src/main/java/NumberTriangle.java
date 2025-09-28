@@ -63,7 +63,17 @@ public class NumberTriangle {
      * Note: a NumberTriangle contains at least one value.
      */
     public void maxSumPath() {
-        // for fun [not for credit]:
+        root = getMaxSum();
+    }
+
+    // Get the maximum path sum of this Number Triangle
+    public int getMaxSum() {
+        if (isLeaf()) {
+            return root;
+        }
+        int leftVal = left.getMaxSum();
+        int rightVal = right.getMaxSum();
+        return root + Integer.max(leftVal, rightVal);
     }
 
 
